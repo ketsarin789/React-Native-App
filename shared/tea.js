@@ -1,40 +1,40 @@
 export const TEA =[
     {
         id:0,
-        name: 'Jelly Lemon Green Tea',
-        image:'/components/images/Aiyu-Jelly-Lemon-Green-Tea-png',
+        name: 'Fruit Tea',
+        image:'/components/images/fruit tea.jpg',
         featured: false,
         description: 
         'Fresh squeezed lemon juice, green tea, and Aiyu Jelly'
     },
     {
         id:1,
-        name: 'Black Tea Latte',
-        image:'/components/images/Black-Tea-Latte.png',
+        name: 'Espresso',
+        image:'/components/images/Espresso_Machine-Pouring.jpg',
         featured: false,
         description: 
-        'Sun Moon Lake Black Tea with milk'
+        'Signature coffee form ours local coffee with you can choose ice or hot'
     },
     {
         id:2,
-        name: 'Brow-Sugar-Pearl-Black-Tea-Latte',
-        image:'/components/images/Brow-Sugar-Pearl-Black-Tea-Latte.png',
+        name: 'Sea Salt Cream',
+        image:'/components/images/Sea Salt.jpg',
         featured: false,
         description: 
-        'Decadent Milk Tea with Sweet Brown Sugar'
+        'Tea with smooth foam which made by sea salt,cream and organics milk'
     },
     {
         id:3,
-        name: 'Grass-Jelly-Tea',
-        image:'/components/images/Grass-Jelly-Tea.png',
+        name: 'Tea Latte',
+        image:'/components/images/tea latte.jpeg',
         featured: false,
         description: 
         'Taiwan Guanshi Mesona herb extract with Winter Melon Juice'
     },
     {
         id:4,
-        name: 'Roselle-Lemonade',
-        image:'/components/images/Roselle-Lemonade.png',
+        name: 'Ice cream float',
+        image:'/components/images/ice cream float.jpeg',
         featured: false,
         description: 
         'Taiwan Jinfeng Roselle juice with fresh lemon slice'
@@ -42,7 +42,7 @@ export const TEA =[
     {
         id:5,
         name: 'House-Tea',
-        image:'/components/images/Yi-Fang.png',
+        image:'/components/images/Yi-Fang-Tea.png',
         featured: true,
         description: 
         'Pineapple, passion fruit, apple sliced, orange sliced mixed with Jade Tea'
