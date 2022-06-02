@@ -1,20 +1,67 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
-import { Card } from "react-native-elements";
+import { Text, View, Image, ScrollView, FlatList, Button } from "react-native";
+import { Card, Icon } from "react-native-elements";
 import { TEA } from "../shared/tea";
+import { COMMENTS } from "../shared/comments";
 
-function RenderTea({ tea }) {
+function RenderTea(props) {
+  const { tea } = props;
+
   if (tea) {
     return (
-      <Card
-        featuredTitle={tea.name}
-        image={require("./images/Black-Tea-Latte.png")}
-      >
-        <Text style={{ margin: 10 }}>{tea.description}</Text>
-      </Card>
+      <View style={{ marginTop: 10 }}>
+        <Image
+          source={{
+            uri: "https://yifangfruitt.com/wp-content/uploads/2019/01/Roselle-Lemonade.png",
+          }}
+          style={{ width: "100%", height: 500 }}
+        />
+        <Text style={{ alignSelf: "center", marginTop: 5 }}>Rose Lemonade</Text>
+        <Text style={{ alignSelf: "center", marginTop: 5 }}>$6.95</Text>
+        <Icon
+          name={props.favorite ? "heart" : "heart-o"}
+          type="font-awesome"
+          color="#f50"
+          raised
+          reverse
+          onPress={() =>
+            props.favorite
+              ? console.log("Already set as a favorite")
+              : props.favorite()
+          }
+        />
+        <Button
+          title="Add To Cart"
+          color="#5637DD"
+          style={{ margin: 40, width: 30 }}
+        />
+      </View>
     );
   }
   return <View />;
+}
+
+function RenderComment({ comments }) {
+  const renderCommentItem = ({ item }) => {
+    return (
+      <View style={{ margin: 10 }}>
+        <Text style={{ fontSize: 14 }}>{item.text}</Text>
+        <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text>
+        <Text
+          style={{ fontSize: 12 }}
+        >{`-- ${item.author}, ${item.date}`}</Text>
+      </View>
+    );
+  };
+  return (
+    <Card title="Comments">
+      <FlatList
+        data={comments}
+        renderItem={renderCommentItem}
+        keyExtractor={(item) => item.id.toString()}
+      />
+    </Card>
+  );
 }
 
 class TeaInfo extends Component {
@@ -22,7 +69,12 @@ class TeaInfo extends Component {
     super(props);
     this.state = {
       tea: TEA,
+      comments: COMMENTS,
+      favorite: false,
     };
+  }
+  markFavorite() {
+    this.setState({ favorite: true });
   }
   static navigationOptions = {
     title: "Tea Information",
@@ -30,7 +82,19 @@ class TeaInfo extends Component {
   render() {
     const teaId = this.props.navigation.getParam("teaId");
     const tea = this.state.tea.filter((tea) => tea.id === teaId)[0];
-    return <RenderTea tea={tea} />;
+    const comments = this.state.comments.filter(
+      (comment) => comment.teaId === teaId
+    );
+    return (
+      <ScrollView>
+        <RenderTea
+          tea={tea}
+          favorite={this.state.favorite}
+          markFavorite={() => this.markFavorite()}
+        />
+        <RenderComment comments={comments} />
+      </ScrollView>
+    );
   }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Home from "./HomeComponent";
+//import FirstPage from "./FirstComponent";
 import Directory from "./DirectoryComponent";
 //import { TEA } from "../shared/tea";
 import TeaInfo from "./TeaInfoComponent";
