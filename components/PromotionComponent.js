@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import { ScrollView, Card, View, Image } from "react-native";
+import { ScrollView, Card, View, Image, Text, StyleSheet, Button } from "react-native";
+import { ScreenStackHeaderRightView } from "react-native-screens";
 import { PROMOTION } from "../shared/promotion";
 
 function RenderPromotion(props) {
   const promotion = props;
   if (promotion) {
     return (
-      <View style={{ marginTop: 10 }}>
-        <Image source={require("./images/Thai-Tea.jpg")} />
+      <View>
+        <Image 
+        source={require("./images/Thai-Tea.jpg")} style={styles.picture}/>
+        <Text style={styles.text}>$2 off for Thai Ice Tea</Text>
+        <Button 
+          title="Add To Cart"
+          style={{margin: 40}}
+        />
       </View>
     );
   }
@@ -35,4 +42,22 @@ class Promotions extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  
+     picture: {
+      alignItems:'center',
+       flex: 1,
+      flexDirection:'row',
+       margin: 20,
+       width: 200
+      
+    },
+    text: {
+      justifyContent: 'flex-end',
+      margin: 10,
+      fontSize: 30
+    }
+   
+  })
 export default Promotions;
